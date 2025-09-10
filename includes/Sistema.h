@@ -1,11 +1,11 @@
 #pragma once
-
 #include <string>
+#include <iostream>
 
 class Sistema {
     public:
-
         Sistema();
+        
         //Manejo de Alumnos
         void registrarAlumno();
         bool buscarAlumno();
@@ -28,6 +28,7 @@ class Sistema {
         void cursosInscritosPorAlumno();
         double promedioNotasAlumnoCurso();
         double promedioGeneralAlumno();
+        ~Sistema();
 
 };    
         

@@ -1,5 +1,13 @@
 #Para ignorar los ejecutables
 *.exe
 
-#Para ignorar los vscode
-.vscode/
+# Carpetas de compilación de CLion
+cmake-build-*/
+
+# Archivos de configuración de JetBrains
+.idea/
+
+# Archivos temporales del sistema
+*.log
+*.cache
+*.tmp
