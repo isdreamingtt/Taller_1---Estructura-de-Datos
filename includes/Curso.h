@@ -10,9 +10,9 @@ class Curso{
         std::string nombreProfesor;
 
     public:
+        Curso();
         Curso(int id, std::string nombre, int cantidadMaxEstudiantes, std::string carrera, std::string nombreProfesor);
-        Curso* sig;
-        
+
         int getId();
         std::string getNombre();
         int getCantidadMaxEstudiantes();

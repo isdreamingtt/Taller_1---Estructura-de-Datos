@@ -1,13 +1,13 @@
 #include "../includes/Curso.h"
 #include <iostream>
 
+Curso::Curso(){};
 Curso::Curso(int id, std::string nombre, int cantidadMaxEstudiantes, std::string carrera, std::string nombreProfesor){
     this->id = id;
     this->nombre = nombre;
     this->cantidadMaxEstudiantes = cantidadMaxEstudiantes;
     this->carrera = carrera;
     this->nombreProfesor = nombreProfesor;
-    this->sig = nullptr;
 }
 
 Curso::~Curso(){}

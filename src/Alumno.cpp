@@ -1,15 +1,15 @@
 #include "../includes/Alumno.h"
 #include <iostream>
 
+Alumno::Alumno(){};
 Alumno::Alumno(int id, std::string nombre, std::string apellido, std::string carrera, std::string anioIngreso){
     this->id = id;
     this->nombre = nombre;
     this->apellido = apellido;
     this->carrera = carrera;
     this->anioIngreso = anioIngreso;
-    this->sig = nullptr;
 }
-Alumno::~Alumno(){}
+Alumno::~Alumno(){std::cout<<"Alumno eliminado"<<std::endl;}
 
 int Alumno::getId(){
     return this->id;

@@ -1,32 +1,19 @@
 #include "../includes/Sistema.h"
-#include "../includes/Alumno.h"
+#include "../includes/NodoAlumno.h"
 #include <iostream>
 #include <string>
 
 Sistema::Sistema() {}
 Sistema::~Sistema() {std::cout<<"Sistema eliminado"<<std::endl;}
+
+
 //Manejo de Alumnos
-void Sistema::registrarAlumno() {
-    std::cout << "Registrando Alumno...\n" << std::endl;
-
-    int id;
-    std::string nombre;
-    std::string apellido;
-    std::string carrera;
-    std::string anioIngreso;
-
-    std::cout << "Ingrese ID: ";
-    std::cin >> id;
-    std::cout << "Ingrese Nombre: ";
-    std::cin >> nombre;
-    std::cout << "Ingrese Apellido: ";
-    std::cin >> apellido;
-    std::cout << "Ingrese Carrera: ";
-    std::cin >> carrera;
-    std::cout << "Ingrese Anio Ingreso: ";
-    std::cin >> anioIngreso;
-
+void Sistema::registrarAlumno(int id, std::string nombre, std::string apellido, std::string carrera,std::string anioIngreso) {
+    std::cout << "\nRegistrando Alumno..." << std::endl;
     Alumno* alumno = new Alumno(id,nombre, apellido, carrera, anioIngreso);
+    std::cout<<"Alumno: "<< alumno -> getNombre() << " con ID: " << alumno -> getId() <<std::endl;
+    NodoAlumno* al = new NodoAlumno(*alumno);
+    eliminarNodosAlumnos(al);
 }
 
 bool Sistema::buscarAlumno() {
@@ -66,3 +53,14 @@ double Sistema::promedioNotasAlumnoCurso() {
 double Sistema::promedioGeneralAlumno() {
     return 0.0;
 }
+
+//Todos los metodos privados
+void Sistema::eliminarNodosAlumnos(NodoAlumno* head) {
+    while (head != nullptr) {
+        NodoAlumno* aux = head;
+        head = head -> prox;
+        delete aux;
+    }
+}
+
+

@@ -1,13 +1,20 @@
 #pragma once
+#include "Alumno.h"
 #include <string>
 #include <iostream>
 
+#include "NodoAlumno.h"
+
 class Sistema {
+    private:
+        void eliminarNodosAlumnos(NodoAlumno *head);
+
+
     public:
         Sistema();
         
         //Manejo de Alumnos
-        void registrarAlumno();
+        void registrarAlumno(int id, std::string nombre, std::string apellido, std::string carrera, std::string anioIngreso);
         bool buscarAlumno();
         void eliminarAlumno();
 

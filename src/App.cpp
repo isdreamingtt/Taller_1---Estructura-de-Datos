@@ -1,5 +1,6 @@
 #include "../includes/Sistema.h"
 #include <iostream>
+#include <string>
 
 void ConsultasReportes(Sistema* sistema){
     int opcion;
@@ -11,20 +12,18 @@ void ConsultasReportes(Sistema* sistema){
         std::cout << "4. Promedio General de Notas de Alumno"<< std::endl;
         std::cout << "0. Volver al menú principal" << std::endl << "> ";
         std::cin >> opcion;
-        switch (opcion)
-        {
-        case 1:
-            break;
-        case 2:
-            break;
-        case 3:
-            break;
-        case 4:
-            break;
-        case 0:
+
+        if (opcion == 0) {
             std::cout << "Volviendo al menú principal..." << std::endl;
-            break;
-        default:
+        }else if (opcion == 1) {
+
+        }else if (opcion == 2) {
+
+        }else if (opcion == 3) {
+
+        }else if (opcion == 4) {
+
+        }else {
             std::cout << std::endl;
             std::cout << "Opción no válida. Por favor, intente de nuevo." << std::endl;
         }
@@ -40,17 +39,15 @@ void ManejoNotas(Sistema* sistema){
         std::cout << "1. Registrar Notas de Alumno"<< std::endl;
         std::cout << "0. Volver al menú principal" << std::endl << "> ";
         std::cin >> opcion;
-        switch (opcion)
-        {
-        case 1:
-            break;
-        case 0:
+        if (opcion == 0) {
             std::cout << "Volviendo al menú principal..." << std::endl;
-            break;
-        default:
+        }else if (opcion == 1) {
+
+        }else if (opcion == 2) {
+
+        }else {
             std::cout << std::endl;
             std::cout << "Opción no válida. Por favor, intente de nuevo." << std::endl;
-            break;
         }
         std::cout << std::endl;
 
@@ -65,19 +62,17 @@ void ManejoInscripciones(Sistema* sistema){
         std::cout << "2. Eliminar Inscripción de Alumno a Curso"<< std::endl;
         std::cout << "0. Volver al menú principal" << std::endl << "> ";
         std::cin >> opcion;
-        switch (opcion)
-        {
-        case 1:
-            break;
-        case 2:
-            break;
-        case 0:
+
+
+        if (opcion == 0) {
             std::cout << "Volviendo al menú principal..." << std::endl;
-            break;
-        default:
+        }else if (opcion == 1) {
+
+        }else if (opcion == 2) {
+
+        }else {
             std::cout << std::endl;
             std::cout << "Opción no válida. Por favor, intente de nuevo." << std::endl;
-            break;
         }
         std::cout << std::endl;
 
@@ -93,21 +88,17 @@ void ManejoCursos(Sistema* sistema){
         std::cout << "3. Eliminar Curso"<< std::endl;
         std::cout << "0. Volver al menú principal" << std::endl << "> ";
         std::cin >> opcion;
-        switch (opcion)
-        {
-        case 1:
-            break;
-        case 2:
-            break;
-        case 3:
-            break;
-        case 0:
+        if (opcion == 0) {
             std::cout << "Volviendo al menú principal..." << std::endl;
-            break;
-        default:
+        }else if (opcion == 1) {
+
+        }else if (opcion == 2) {
+
+        }else if (opcion == 3) {
+
+        }else {
             std::cout << std::endl;
             std::cout << "Opción no válida. Por favor, intente de nuevo." << std::endl;
-            break;
         }
         std::cout << std::endl;
 
@@ -123,25 +114,37 @@ void ManejoAlumnos(Sistema* sistema){
         std::cout << "3. Eliminar Alumno"<< std::endl;
         std::cout << "0. Volver al menú principal" << std::endl << "> ";
         std::cin >> opcion;
-        switch (opcion)
-        {
-        case 1:
-                std::cout << std::endl;
-            sistema -> registrarAlumno();
-            break;
-        case 2:
-            break;
-        case 3:
-            break;
-        case 0:
-            std::cout << "Volviendo al menú principal..." << std::endl;
-            break;
-        default:
+
+        if (opcion == 0) {
+            std::cout << "Volviendo al menú principal..." <<std::endl;
+        }else if (opcion == 1) {
             std::cout << std::endl;
-            std::cout << "Opción no válida. Por favor, intente de nuevo." << std::endl;
-            break;
+            int id;
+            std::string nombre;
+            std::string apellido;
+            std::string carrera;
+            std::string anioIngreso;
+
+            std::cout << "Ingrese ID: ";
+            std::cin >> id;
+            std::cout << "Ingrese Nombre: ";
+            std::cin >> nombre;
+            std::cout << "Ingrese Apellido: ";
+            std::cin >> apellido;
+            std::cout << "Ingrese Carrera: ";
+            std::cin >> carrera;
+            std::cout << "Ingrese Anio Ingreso: ";
+            std::cin >> anioIngreso;
+
+            sistema -> registrarAlumno(id, nombre, apellido, carrera, anioIngreso);
+            std::cout << std::endl;
+        }else if (opcion == 2) {
+
+        }else if (opcion == 3) {
+
+        }else {
+                std::cout << "Opción no válida. Por favor, intente de nuevo." << std::endl;
         }
-        std::cout << std::endl;
 
     }while(opcion != 0);
 }
@@ -159,37 +162,28 @@ void menu(Sistema* sistema){
         std::cout << "0. Salir" << std::endl << "> ";
         std::cin >> opcion;
 
-        switch (opcion)
-        {
-        case 1:
+        std::cout << std::endl;
+        if (opcion == 0) {
+            std::cout << "Saliendo del programa..." << std::endl;
+        }else if (opcion == 1) {
             std::cout << std::endl;
             ManejoAlumnos(sistema);
-            break;
-        case 2:
+        }else if (opcion == 2) {
             std::cout << std::endl;
             ManejoCursos(sistema);
-            break;
-        case 3:
+        }else if (opcion == 3) {
             std::cout << std::endl;
             ManejoInscripciones(sistema);
-            break;
-        case 4: 
+        }else if (opcion == 4) {
             std::cout << std::endl;
             ManejoNotas(sistema);
-            break;
-        case 5:
+        }else if (opcion == 5) {
             std::cout << std::endl;
             ConsultasReportes(sistema);
-            break;
-        case 0:
-            std::cout << "Saliendo del programa..." << std::endl;
-            break;
-        default:
+        }else {
             std::cout << std::endl;
             std::cout << "Opción no válida. Por favor, intente de nuevo." << std::endl;
-            
         }
-        std::cout << std::endl;
 
     }while(opcion != 0);
 }

@@ -11,10 +11,9 @@ class Alumno{
         std::string anioIngreso;
         
     public:
+        Alumno();
         Alumno(int id, std::string nombre, std::string apellido, std::string carrera, std::string anioIngreso);
         ~Alumno();
-
-        Alumno* sig;
 
         int getId();
         std::string getNombre(); 

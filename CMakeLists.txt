@@ -12,4 +12,8 @@ add_executable(Taller_1_ED
         src/Alumno.cpp
         src/App.cpp
         src/Curso.cpp
-        src/Sistema.cpp)
+        src/Sistema.cpp
+        src/NodoAlumno.cpp
+        includes/NodoAlumno.h
+        src/NodoCurso.cpp
+        includes/NodoCurso.h)
