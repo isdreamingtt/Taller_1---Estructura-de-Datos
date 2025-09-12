@@ -19,5 +19,5 @@ class Curso{
         int getCantidadMaxEstudiantes();
         std::string getCarrera();
         std::string getNombreProfesor();
-        ~Curso(); 
+        ~Curso();
 };

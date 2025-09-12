@@ -82,7 +82,7 @@ void ManejoInscripciones(Sistema* sistema){
     }while(opcion != 0);
 }
 
-void ManejoCursos(Sistema* sistema){
+void ManejoCursos(Sistema* sistema, NodoCurso* headCurso){
     int opcion;
     do{
         std::cout << "Manejo de Cursos:"<< std::endl;
@@ -94,8 +94,53 @@ void ManejoCursos(Sistema* sistema){
         if (opcion == 0) {
             std::cout << "Volviendo al menú principal..." << std::endl;
         }else if (opcion == 1) {
+            std::cout << std::endl;
+            int id;
+            std::string nombre;
+            int cantidadMaxEstudiantes;
+            std::string carrera;
+            std::string NombreProfesor;
 
+            std::cout << "Ingrese ID: ";
+            std::cin >> id;
+            std::cout << "Ingrese Nombre: ";
+            std::cin >> nombre;
+            std::cout << "Ingrese cantidad maxima de alumnos en el curso: ";
+            std::cin >> cantidadMaxEstudiantes;
+            std::cout << "Ingrese Carrera al que pertenece el curso: ";
+            std::cin >> carrera;
+            std::cin.ignore(1000, '\n');
+            std::cout << "Ingrese el nombre del profesor que ejerce el curso: ";
+            std::getline(std::cin, NombreProfesor) ;
+
+            sistema -> registrarCurso(id, nombre, cantidadMaxEstudiantes, carrera, NombreProfesor, headCurso);
+            std::cout << std::endl;
         }else if (opcion == 2) {
+            if (headCurso == nullptr) {
+                std::cout << "No se encuentra ningun curso creado aun" << std::endl;
+                std::cout << std::endl;
+                break;
+            }
+            std::cout << std::endl;
+            int opBuscar;
+            std::cout << "Buscar por: \n1. ID \n2. Nombre\n> " << std::endl;
+            std::cin >> opBuscar;
+
+            if (opBuscar == 1) {
+                int id;
+                std::cout << std::endl;
+                std::cout << "Ingrese ID: ";
+                std::cin  >> id;
+                sistema -> buscarCurso(headCurso, id, "");
+            }else if (opBuscar == 2) {
+                std::string nombre;
+                std::cout << std::endl;
+                std::cout << "Ingrese Nombre: ";
+                std::cin >> nombre;
+                sistema -> buscarCurso(headCurso, -1, nombre);
+
+            }
+            std::cout << std::endl;
 
         }else if (opcion == 3) {
 
@@ -191,7 +236,7 @@ void ManejoAlumnos(Sistema *sistema, NodoAlumno*& headAlumno){
 }
 
 
-void menu(Sistema* sistema, NodoAlumno*& headAlumno){
+void menu(Sistema* sistema, NodoAlumno*& headAlumno, NodoCurso*& headCurso){
     int opcion;
     do{
         std::cout << "Menú de Opciones:"<< std::endl;
@@ -211,7 +256,7 @@ void menu(Sistema* sistema, NodoAlumno*& headAlumno){
             ManejoAlumnos(sistema, headAlumno);
         }else if (opcion == 2) {
             std::cout << std::endl;
-            ManejoCursos(sistema);
+            ManejoCursos(sistema, headCurso);
         }else if (opcion == 3) {
             std::cout << std::endl;
             ManejoInscripciones(sistema);
@@ -233,9 +278,11 @@ int main(){
     Sistema* sistema = new Sistema();
     std::cout << "Bienvenido/a a la Gestión de Información Académica" << std::endl;
     NodoAlumno* headAlumno = nullptr;
-    menu(sistema, headAlumno);
+    NodoCurso* headCurso = nullptr;
+    menu(sistema, headAlumno, headCurso);
     //sistema -> mostrarAlumnos(headAlumno);
     sistema -> eliminarNodosAlumnos(headAlumno);
+    sistema -> eliminarNodosCurso(headCurso);
     delete sistema;
     return 0;
 }

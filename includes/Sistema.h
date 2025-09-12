@@ -10,7 +10,9 @@
 class Sistema {
 private:
     void insertarNodoAlFinalAlumnos(NodoAlumno*& nodo_alumno, NodoAlumno*& head);
-    void eliminarNodoAlumnoID(NodoAlumno*& nodo_alumno, NodoAlumno*& head, bool op);
+    void insertarNodoAlFinalCursos(NodoCurso*& nodo_curso, NodoCurso*& head);
+    void eliminarNodoCursoID(NodoAlumno*& nodo_alumno, NodoAlumno*& head, bool op);
+
 public:
     Sistema();
 
@@ -21,8 +23,8 @@ public:
     void eliminarAlumno(NodoAlumno*& headAlumno, int id);
 
     //Manejo de Cursos
-    void registrarCurso();
-    bool buscarCurso();
+    void registrarCurso(int id, std::string nombre, int cantMaxEstudiantes, std::string carrera, std::string nombreProfesor, NodoCurso*& headCurso);
+    void buscarCurso(NodoCurso* headCurso, int id, std::string nombre);
     void eliminarCurso();
 
     //Manejo de inscripciones
@@ -38,7 +40,9 @@ public:
     double promedioNotasAlumnoCurso();
     double promedioGeneralAlumno();
     ~Sistema();
+
     void eliminarNodosAlumnos(NodoAlumno*& head);
+    void eliminarNodosCurso(NodoCurso*& head);
     void mostrarAlumnos(NodoAlumno* head);
 
     //Metodos requeridos

@@ -6,11 +6,15 @@ NodoCurso::NodoCurso(Curso* dato) {
     this -> prox = nullptr;
 }
 
-std::string NodoCurso::toString() {
-    return "Curso "+ this->dato->getNombre();
-}
-
 NodoCurso::~NodoCurso() {
     std::cout<<"Nodo eliminado" << std::endl;
     delete this -> dato;
+}
+
+std::string NodoCurso::toString() {
+    return "Curso "+ this->dato->getNombre()+
+        ", Cantidad de estudiantes: " +
+            std::to_string(this -> dato -> getCantidadMaxEstudiantes())+
+                ", Carrera: " + this -> dato -> getCarrera() +
+                    ", Profesro: " + this-> dato -> getNombreProfesor();
 }

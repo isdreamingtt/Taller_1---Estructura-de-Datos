@@ -65,10 +65,34 @@ void Sistema::eliminarAlumno(NodoAlumno*& headAlumno, int id) {
 }
 
 //Manejo de Cursos
-void Sistema::registrarCurso() {
+void Sistema::registrarCurso(int id, std::string nombre, int cantMaxEstudiantes, std::string carrera, std::string nombreProfesor, NodoCurso*& headCurso) {
+    std::cout << "\nRegistrando Curso..." << std::endl;
+    Curso* curso = new Curso(id, nombre, cantMaxEstudiantes, carrera, nombreProfesor);
+    NodoCurso* nodoCurso = new NodoCurso(curso);
+    insertarNodoAlFinalCursos(nodoCurso, headCurso);
+
 }
-bool Sistema::buscarCurso() {
-    return false;
+
+void Sistema::buscarCurso(NodoCurso* headCurso, int id, std::string nombre) {
+    if (nombre == "") {
+        NodoCurso* aux = headCurso;
+        while (aux != nullptr) {
+            if (aux -> dato -> getId() == id) {
+                std::cout << aux -> toString() << std::endl;
+
+            }
+            aux = aux -> prox;
+        }
+    } else {
+        NodoCurso* aux = headCurso;
+        while (aux != nullptr) {
+            if (aux -> dato -> getNombre() == nombre) {
+                std::cout << aux -> toString() << std::endl;
+            }
+            aux = aux -> prox;
+        }
+    }
+
 }
 void Sistema::eliminarCurso() {
 }
@@ -117,6 +141,16 @@ void Sistema::eliminarNodosAlumnos(NodoAlumno*& head) {
     head = nullptr;
 }
 
+void Sistema::eliminarNodosCurso(NodoCurso*& head) {
+    NodoCurso* aux;
+    while (head != nullptr) {
+        aux = head;
+        head = head -> prox;
+        delete aux;
+    }
+    head = nullptr;
+}
+
 void Sistema::insertarNodoAlFinalAlumnos(NodoAlumno*& nodo_alumno, NodoAlumno*& head) {
     if (head == nullptr) {
         head = nodo_alumno;
@@ -128,6 +162,26 @@ void Sistema::insertarNodoAlFinalAlumnos(NodoAlumno*& nodo_alumno, NodoAlumno*& 
     }
     aux -> prox = nodo_alumno;
 }
+
+void Sistema::eliminarNodoCursoID(NodoAlumno *&nodo_alumno, NodoAlumno *&head, bool op) {
+
+}
+
+void Sistema::insertarNodoAlFinalCursos(NodoCurso *&nodo_curso, NodoCurso *&head) {
+    if (head == nullptr) {
+        head = nodo_curso;
+        return;
+    }
+
+    NodoCurso* aux = head;
+    while (aux -> prox != nullptr) {
+        aux = aux -> prox;
+    }
+
+    aux -> prox = nodo_curso;
+}
+
+
 
 
 
