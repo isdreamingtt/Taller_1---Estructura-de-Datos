@@ -1,12 +1,14 @@
 #pragma once
 #include "Alumno.h"
-
+#include <string>
 class NodoAlumno {
 public:
-    Alumno dato;
+    Alumno* dato;
     NodoAlumno* prox;
     NodoAlumno* atr;
-    NodoAlumno(Alumno& dato);
+    NodoAlumno(Alumno* dato);
+    ~NodoAlumno();
+    std::string toString();
 };
 
 

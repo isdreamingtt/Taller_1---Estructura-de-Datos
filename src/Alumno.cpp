@@ -9,7 +9,7 @@ Alumno::Alumno(int id, std::string nombre, std::string apellido, std::string car
     this->carrera = carrera;
     this->anioIngreso = anioIngreso;
 }
-Alumno::~Alumno(){std::cout<<"Alumno eliminado"<<std::endl;}
+Alumno::~Alumno(){/*std::cout<<"Alumno eliminado: "<<nombre<<std::endl;*/}
 
 int Alumno::getId(){
     return this->id;

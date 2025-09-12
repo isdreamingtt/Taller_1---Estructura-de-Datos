@@ -1,6 +1,9 @@
 #include "../includes/Sistema.h"
+#include "../includes/Alumno.h"
+#include "../includes/Curso.h"
 #include <iostream>
 #include <string>
+
 
 void ConsultasReportes(Sistema* sistema){
     int opcion;
@@ -105,7 +108,7 @@ void ManejoCursos(Sistema* sistema){
     }while(opcion != 0);
 }
 
-void ManejoAlumnos(Sistema* sistema){
+void ManejoAlumnos(Sistema *sistema, NodoAlumno*& headAlumno){
     int opcion;
     do{
         std::cout << "Manejo de Alumnos:"<< std::endl;
@@ -136,8 +139,9 @@ void ManejoAlumnos(Sistema* sistema){
             std::cout << "Ingrese Anio Ingreso: ";
             std::cin >> anioIngreso;
 
-            sistema -> registrarAlumno(id, nombre, apellido, carrera, anioIngreso);
+            sistema -> registrarAlumno(id, nombre, apellido, carrera, anioIngreso, headAlumno);
             std::cout << std::endl;
+
         }else if (opcion == 2) {
 
         }else if (opcion == 3) {
@@ -150,7 +154,7 @@ void ManejoAlumnos(Sistema* sistema){
 }
 
 
-void menu(Sistema* sistema){
+void menu(Sistema* sistema, NodoAlumno*& headAlumno){
     int opcion;
     do{
         std::cout << "Menú de Opciones:"<< std::endl;
@@ -167,7 +171,7 @@ void menu(Sistema* sistema){
             std::cout << "Saliendo del programa..." << std::endl;
         }else if (opcion == 1) {
             std::cout << std::endl;
-            ManejoAlumnos(sistema);
+            ManejoAlumnos(sistema, headAlumno);
         }else if (opcion == 2) {
             std::cout << std::endl;
             ManejoCursos(sistema);
@@ -190,9 +194,11 @@ void menu(Sistema* sistema){
 
 int main(){
     Sistema* sistema = new Sistema();
-
     std::cout << "Bienvenido/a a la Gestión de Información Académica" << std::endl;
-    menu(sistema);
+    NodoAlumno* headAlumno = nullptr;
+    menu(sistema, headAlumno);
+    //sistema -> mostrarAlumnos(headAlumno);
+    sistema -> eliminarNodosAlumnos(headAlumno);
     delete sistema;
     return 0;
 }

@@ -4,16 +4,21 @@
 #include <string>
 
 Sistema::Sistema() {}
-Sistema::~Sistema() {std::cout<<"Sistema eliminado"<<std::endl;}
+Sistema::~Sistema() {/*std::cout<<"Sistema eliminado"<<std::endl;*/}
 
 
 //Manejo de Alumnos
-void Sistema::registrarAlumno(int id, std::string nombre, std::string apellido, std::string carrera,std::string anioIngreso) {
+NodoAlumno* Sistema::registrarAlumno(int id, std::string nombre, std::string apellido,
+    std::string carrera,std::string anioIngreso, NodoAlumno*& headAlumno) {
+
     std::cout << "\nRegistrando Alumno..." << std::endl;
     Alumno* alumno = new Alumno(id,nombre, apellido, carrera, anioIngreso);
-    std::cout<<"Alumno: "<< alumno -> getNombre() << " con ID: " << alumno -> getId() <<std::endl;
-    NodoAlumno* al = new NodoAlumno(*alumno);
-    eliminarNodosAlumnos(al);
+    //std::cout<<"Alumno: "<< alumno -> getNombre() << " con ID: " << alumno -> getId() <<std::endl;
+
+    NodoAlumno* nodoAlumno = new NodoAlumno(alumno);
+
+    insertarNodoAlFinalAlumnos(nodoAlumno, headAlumno);
+    return nodoAlumno;
 }
 
 bool Sistema::buscarAlumno() {
@@ -55,12 +60,35 @@ double Sistema::promedioGeneralAlumno() {
 }
 
 //Todos los metodos privados
-void Sistema::eliminarNodosAlumnos(NodoAlumno* head) {
+void Sistema::eliminarNodosAlumnos(NodoAlumno*& head) {
+    NodoAlumno* aux;
     while (head != nullptr) {
-        NodoAlumno* aux = head;
+        aux = head;
         head = head -> prox;
         delete aux;
     }
+    head = nullptr;
 }
+
+void Sistema::insertarNodoAlFinalAlumnos(NodoAlumno*& nodo_alumno, NodoAlumno*& head) {
+    if (head == nullptr) {
+        head = nodo_alumno;
+        return;
+    }
+    NodoAlumno* aux = head;
+    while (aux -> prox != nullptr) {
+        aux = aux -> prox;
+    }
+    aux -> prox = nodo_alumno;
+}
+
+void Sistema::mostrarAlumnos(NodoAlumno *head) {
+    NodoAlumno* aux = head;
+    while (aux != nullptr) {
+        std::cout << aux -> toString() << std::endl;
+        aux = aux -> prox;
+    }
+}
+
 
 

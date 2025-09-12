@@ -1,20 +1,22 @@
 #pragma once
 #include "Alumno.h"
+#include "Curso.h"
+#include "NodoAlumno.h"
+#include "NodoCurso.h"
 #include <string>
 #include <iostream>
 
-#include "NodoAlumno.h"
 
 class Sistema {
     private:
-        void eliminarNodosAlumnos(NodoAlumno *head);
-
+        void insertarNodoAlFinalAlumnos(NodoAlumno*& nodo_alumno, NodoAlumno*& head);
 
     public:
         Sistema();
-        
+
         //Manejo de Alumnos
-        void registrarAlumno(int id, std::string nombre, std::string apellido, std::string carrera, std::string anioIngreso);
+        NodoAlumno* registrarAlumno(int id, std::string nombre, std::string apellido,
+            std::string carrera, std::string anioIngreso, NodoAlumno*& headAlumno);
         bool buscarAlumno();
         void eliminarAlumno();
 
@@ -36,6 +38,7 @@ class Sistema {
         double promedioNotasAlumnoCurso();
         double promedioGeneralAlumno();
         ~Sistema();
-
+        void eliminarNodosAlumnos(NodoAlumno*& head);
+        void mostrarAlumnos(NodoAlumno* head);
 };    
         
