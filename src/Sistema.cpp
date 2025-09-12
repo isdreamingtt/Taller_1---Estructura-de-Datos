@@ -42,7 +42,26 @@ void Sistema::buscarAlumno(NodoAlumno* headAlumno, int id, std::string nombre) {
     }
 }
 
-void Sistema::eliminarAlumno() {
+void Sistema::eliminarAlumno(NodoAlumno*& headAlumno, int id) {
+    //Esto es por si el alumno buscado esta en al principio, osea el head
+    if (headAlumno -> dato -> getId() == id) {
+        NodoAlumno* aux = headAlumno;
+        headAlumno = headAlumno -> prox;
+        delete aux;
+        return;
+    }
+
+    //Si esta en otro lado que no sea head
+    NodoAlumno* aux = headAlumno;
+    while (aux != nullptr && aux -> prox != nullptr) {
+        if (aux -> prox -> dato -> getId() == id) {
+            NodoAlumno* aux2 = aux -> prox;
+            aux -> prox = aux2 -> prox -> prox;
+            delete aux2;
+            return;
+        }
+        aux = aux -> prox;
+    }
 }
 
 //Manejo de Cursos

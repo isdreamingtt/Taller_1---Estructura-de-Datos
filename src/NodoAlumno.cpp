@@ -3,7 +3,6 @@
 NodoAlumno::NodoAlumno(Alumno* dato) {
     this -> dato = dato;
     this -> prox = nullptr;
-    this -> atr = nullptr;
 }
 
 NodoAlumno::~NodoAlumno() {
@@ -13,9 +12,9 @@ NodoAlumno::~NodoAlumno() {
 
 std::string NodoAlumno::toString() {
 
-    return "Nombre y apellido :"+ this->dato->getNombre() + " " +
+    return "Alumno: "+ this->dato->getNombre() + " " +
         this->dato->getApellido() + ", Carrera: " +
-            this->dato->getCarrera() + ", año de ingreso:  " +
+            this->dato->getCarrera() + ", anio de ingreso:  " +
                 this->dato->getAnioIngreso();
 }
 

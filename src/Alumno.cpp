@@ -8,6 +8,7 @@ Alumno::Alumno(int id, std::string nombre, std::string apellido, std::string car
     this->apellido = apellido;
     this->carrera = carrera;
     this->anioIngreso = anioIngreso;
+    this->curso = nullptr;
 }
 Alumno::~Alumno(){/*std::cout<<"Alumno eliminado: "<<nombre<<std::endl;*/}
 
@@ -25,6 +26,10 @@ std::string Alumno::getCarrera(){
 }
 std::string Alumno::getAnioIngreso(){
     return this->anioIngreso;
+}
+
+Curso* Alumno::getCurso() {
+    return this -> curso;
 }
 
 

@@ -1,4 +1,5 @@
 #pragma once
+#include "NodoNotas.h"
 #include <iostream>
 
 class Curso{
@@ -8,7 +9,7 @@ class Curso{
         int cantidadMaxEstudiantes;
         std::string carrera;
         std::string nombreProfesor;
-
+        NodoNotas* notas;
     public:
         Curso();
         Curso(int id, std::string nombre, int cantidadMaxEstudiantes, std::string carrera, std::string nombreProfesor);

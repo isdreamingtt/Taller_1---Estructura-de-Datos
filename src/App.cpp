@@ -143,6 +143,11 @@ void ManejoAlumnos(Sistema *sistema, NodoAlumno*& headAlumno){
             std::cout << std::endl;
 
         }else if (opcion == 2) {
+            if (headAlumno == nullptr) {
+                std::cout << "No se encuentra ningun alumno inscrito aun" << std::endl;
+                std::cout << std::endl;
+                break;
+            }
             std::cout << std::endl;
             int opBuscar;
             std::cout << "Buscar por: \n1. ID \n2. Nombre\n> " << std::endl;
@@ -165,6 +170,18 @@ void ManejoAlumnos(Sistema *sistema, NodoAlumno*& headAlumno){
             std::cout << std::endl;
 
         }else if (opcion == 3) {
+            if (headAlumno == nullptr) {
+                std::cout << "No se encuentra ningun alumno inscrito aun" << std::endl;
+                std::cout << std::endl;
+                break;
+            }
+            std::cout << std::endl;
+            int opBuscarEliminar;
+            std::cout << "Ingrese ID de alumno para eliminar: ";
+            std::cin >> opBuscarEliminar;
+
+            sistema -> eliminarAlumno(headAlumno, opBuscarEliminar);
+            std::cout << std::endl;
 
         }else {
                 std::cout << "Opción no válida. Por favor, intente de nuevo." << std::endl;

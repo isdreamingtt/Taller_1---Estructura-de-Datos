@@ -1,4 +1,5 @@
 #pragma once
+#include "Curso.h"
 
 #include <iostream>
 
@@ -9,6 +10,7 @@ class Alumno{
         std::string apellido;
         std::string carrera;
         std::string anioIngreso;
+        Curso* curso;
         
     public:
         Alumno();
@@ -20,5 +22,6 @@ class Alumno{
         std::string getApellido();
         std::string getCarrera();
         std::string getAnioIngreso();
+        Curso* getCurso();
 
 };

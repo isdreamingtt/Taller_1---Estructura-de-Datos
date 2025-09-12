@@ -5,7 +5,6 @@ class NodoAlumno {
 public:
     Alumno* dato;
     NodoAlumno* prox;
-    NodoAlumno* atr;
     NodoAlumno(Alumno* dato);
     ~NodoAlumno();
     std::string toString();

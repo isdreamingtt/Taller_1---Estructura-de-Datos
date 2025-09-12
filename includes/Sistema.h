@@ -10,7 +10,7 @@
 class Sistema {
 private:
     void insertarNodoAlFinalAlumnos(NodoAlumno*& nodo_alumno, NodoAlumno*& head);
-
+    void eliminarNodoAlumnoID(NodoAlumno*& nodo_alumno, NodoAlumno*& head, bool op);
 public:
     Sistema();
 
@@ -18,7 +18,7 @@ public:
     NodoAlumno* registrarAlumno(int id, std::string nombre, std::string apellido,
         std::string carrera, std::string anioIngreso, NodoAlumno*& headAlumno);
     void buscarAlumno(NodoAlumno* headAlumno, int id, std::string nombre);
-    void eliminarAlumno();
+    void eliminarAlumno(NodoAlumno*& headAlumno, int id);
 
     //Manejo de Cursos
     void registrarCurso();
