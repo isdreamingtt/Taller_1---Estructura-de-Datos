@@ -13,9 +13,9 @@ NodoAlumno::~NodoAlumno() {
 
 std::string NodoAlumno::toString() {
 
-    return "Alumno "+ this->dato->getNombre() + " " +
-        this->dato->getApellido() + " " +
-            this->dato->getCarrera() + " " +
-                this->dato->getAnioIngreso() + " ";
+    return "Nombre y apellido :"+ this->dato->getNombre() + " " +
+        this->dato->getApellido() + ", Carrera: " +
+            this->dato->getCarrera() + ", año de ingreso:  " +
+                this->dato->getAnioIngreso();
 }
 

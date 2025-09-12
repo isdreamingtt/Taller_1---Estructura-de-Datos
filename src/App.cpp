@@ -143,6 +143,26 @@ void ManejoAlumnos(Sistema *sistema, NodoAlumno*& headAlumno){
             std::cout << std::endl;
 
         }else if (opcion == 2) {
+            std::cout << std::endl;
+            int opBuscar;
+            std::cout << "Buscar por: \n1. ID \n2. Nombre\n> " << std::endl;
+            std::cin >> opBuscar;
+
+            if (opBuscar == 1) {
+                int id;
+                std::cout << std::endl;
+                std::cout << "Ingrese ID: ";
+                std::cin  >> id;
+                sistema -> buscarAlumno(headAlumno, id, "");
+            }else if (opBuscar == 2) {
+                std::string nombre;
+                std::cout << std::endl;
+                std::cout << "Ingrese Nombre: ";
+                std::cin >> nombre;
+                sistema -> buscarAlumno(headAlumno, -1, nombre);
+
+            }
+            std::cout << std::endl;
 
         }else if (opcion == 3) {
 
