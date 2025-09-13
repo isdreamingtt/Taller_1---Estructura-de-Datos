@@ -57,7 +57,7 @@ void ManejoNotas(Sistema* sistema){
     }while(opcion != 0);
 }
 
-void ManejoInscripciones(Sistema* sistema){
+void ManejoInscripciones(Sistema* sistema,NodoCurso* headCurso ,NodoAlumno* headAlumno){
     int opcion;
     do{
         std::cout << "Manejo de Inscripciones:"<< std::endl;
@@ -70,6 +70,17 @@ void ManejoInscripciones(Sistema* sistema){
         if (opcion == 0) {
             std::cout << "Volviendo al menú principal..." << std::endl;
         }else if (opcion == 1) {
+            if (headCurso == nullptr) {
+                std::cout << "No se encuentra ningun curso creado aun" << std::endl;
+                std::cout << std::endl;
+                break;
+            }
+            if (headAlumno == nullptr) {
+                std::cout << "No se encuentra ningun alumno registrado aun" << std::endl;
+                std::cout << std::endl;
+                break;
+            }
+            sistema -> inscribirAlumnoCurso(headCurso, headAlumno);
 
         }else if (opcion == 2) {
 
@@ -82,7 +93,7 @@ void ManejoInscripciones(Sistema* sistema){
     }while(opcion != 0);
 }
 
-void ManejoCursos(Sistema* sistema, NodoCurso* headCurso){
+void ManejoCursos(Sistema* sistema, NodoCurso*& headCurso){
     int opcion;
     do{
         std::cout << "Manejo de Cursos:"<< std::endl;
@@ -200,7 +211,7 @@ void ManejoAlumnos(Sistema *sistema, NodoAlumno*& headAlumno){
 
         }else if (opcion == 2) {
             if (headAlumno == nullptr) {
-                std::cout << "No se encuentra ningun alumno inscrito aun" << std::endl;
+                std::cout << "No se encuentra ningun alumno registrado aun" << std::endl;
                 std::cout << std::endl;
                 break;
             }
@@ -227,7 +238,7 @@ void ManejoAlumnos(Sistema *sistema, NodoAlumno*& headAlumno){
 
         }else if (opcion == 3) {
             if (headAlumno == nullptr) {
-                std::cout << "No se encuentra ningun alumno inscrito aun" << std::endl;
+                std::cout << "No se encuentra ningun alumno registrado aun" << std::endl;
                 std::cout << std::endl;
                 break;
             }
@@ -245,7 +256,6 @@ void ManejoAlumnos(Sistema *sistema, NodoAlumno*& headAlumno){
 
     }while(opcion != 0);
 }
-
 
 void menu(Sistema* sistema, NodoAlumno*& headAlumno, NodoCurso*& headCurso){
     int opcion;
@@ -269,8 +279,7 @@ void menu(Sistema* sistema, NodoAlumno*& headAlumno, NodoCurso*& headCurso){
             std::cout << std::endl;
             ManejoCursos(sistema, headCurso);
         }else if (opcion == 3) {
-            std::cout << std::endl;
-            ManejoInscripciones(sistema);
+            ManejoInscripciones(sistema, headCurso, headAlumno);
         }else if (opcion == 4) {
             std::cout << std::endl;
             ManejoNotas(sistema);

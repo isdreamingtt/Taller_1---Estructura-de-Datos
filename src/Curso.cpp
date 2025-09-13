@@ -2,6 +2,8 @@
 #include "../includes/NodoAlumno.h"
 #include <iostream>
 
+#include "Alumno.h"
+
 Curso::Curso(){};
 Curso::Curso(int id, std::string nombre, int cantidadMaxEstudiantes, std::string carrera, std::string nombreProfesor){
     this->id = id;
@@ -37,5 +39,26 @@ NodoAlumno* Curso::getAlumnos() {
 
 NodoNotas* Curso::getNotas() {
     return  this->notas;
+}
+
+void Curso::registrarAlumnoEnCurso(NodoAlumno* alumno) {
+    if (alumno == nullptr) {
+        this -> alumnos = alumno;
+        return;
+    }
+    NodoAlumno* aux = alumno;
+    while (aux -> prox!= nullptr) {
+        aux = aux -> prox;
+    }
+    aux -> prox = alumno;
+}
+
+void Curso::mostrarAlumnoEnCurso() {
+    NodoAlumno* aux = this -> alumnos;
+    while (aux != nullptr) {
+        std::cout << aux -> toString() << std::endl;
+        aux = aux -> prox;
+    }
+
 }
 

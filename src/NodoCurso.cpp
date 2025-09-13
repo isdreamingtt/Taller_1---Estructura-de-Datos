@@ -3,8 +3,6 @@
 
 #include <string>
 
-
-
 NodoCurso::NodoCurso(Curso* dato) {
     this -> dato = dato;
     this -> prox = nullptr;
@@ -16,7 +14,8 @@ NodoCurso::~NodoCurso() {
 }
 
 std::string NodoCurso::toString() {
-    return "Curso "+ this->dato->getNombre()+
+    return "ID: " + std::to_string(this->dato->getId()) +
+        "Curso "+ this->dato->getNombre()+
         ", Cantidad de estudiantes: " +
             std::to_string(this -> dato -> getCantidadMaxEstudiantes())+
                 ", Carrera: " + this -> dato -> getCarrera() +

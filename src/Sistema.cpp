@@ -21,12 +21,15 @@ NodoAlumno* Sistema::registrarAlumno(int id, std::string nombre, std::string ape
     return nodoAlumno;
 }
 
-void Sistema::buscarAlumno(NodoAlumno* headAlumno, int id, std::string nombre) {
+NodoAlumno* Sistema::buscarAlumno(NodoAlumno* headAlumno, int id, std::string nombre) {
+
+    NodoAlumno* encontrado = nullptr;
     if (nombre == "") {
         NodoAlumno* aux = headAlumno;
         while (aux != nullptr) {
             if (aux -> dato -> getId() == id) {
                 std::cout << aux -> toString() << std::endl;
+                encontrado = aux;
 
             }
             aux = aux -> prox;
@@ -40,6 +43,8 @@ void Sistema::buscarAlumno(NodoAlumno* headAlumno, int id, std::string nombre) {
             aux = aux -> prox;
         }
     }
+
+    return encontrado;
 }
 
 void Sistema::eliminarAlumno(NodoAlumno*& headAlumno, int id) {
@@ -73,13 +78,15 @@ void Sistema::registrarCurso(int id, std::string nombre, int cantMaxEstudiantes,
 
 }
 
-void Sistema::buscarCurso(NodoCurso* headCurso, int id, std::string nombre) {
+NodoCurso* Sistema::buscarCurso(NodoCurso* headCurso, int id, std::string nombre) {
+    NodoCurso* encontrado = nullptr;
+
     if (nombre == "") {
         NodoCurso* aux = headCurso;
         while (aux != nullptr) {
             if (aux -> dato -> getId() == id) {
                 std::cout << aux -> toString() << std::endl;
-
+                encontrado = aux;
             }
             aux = aux -> prox;
         }
@@ -92,6 +99,8 @@ void Sistema::buscarCurso(NodoCurso* headCurso, int id, std::string nombre) {
             aux = aux -> prox;
         }
     }
+
+    return encontrado;
 
 }
 void Sistema::eliminarCurso(NodoCurso*& headCurso, int id) {
@@ -115,6 +124,41 @@ void Sistema::eliminarCurso(NodoCurso*& headCurso, int id) {
 
 //Manejo de inscripciones
 void Sistema::inscribirAlumnoCurso(NodoCurso*& headCurso, NodoAlumno*& headAlumno) {
+    //Mostrar listado de los alumnos registrado que aun no estan inscritos en un curso
+    std::cout << "\nListado de los alumnos que no estan inscritos en un curso" << std::endl;
+
+    NodoAlumno* aux = headAlumno;
+    while (aux != nullptr) {
+        if (aux->dato -> getCurso() == nullptr) {
+            std::cout << aux -> toString() << std::endl;
+        }
+        aux = aux -> prox;
+    }
+
+    int opcionID;
+    std::cout <<"Ingrese el ID del alumno a registrar: ";
+    std::cin >> opcionID;
+    std::cout << "Alumno elegido: " << std::endl;
+    NodoAlumno* elegido = buscarAlumno(headAlumno, opcionID, "");
+    std::cout << std::endl;
+    std::cout << "Listado de cursos disponibles para inscribir" << std::endl;
+    NodoCurso* aux2 = headCurso;
+    while (aux2 != nullptr) {
+        if (aux2 -> dato -> getCantidadMaxEstudiantes() > 0 && aux2 -> dato ->getCarrera() == elegido -> dato -> getCarrera()) {
+            std::cout << aux2 -> toString() << std::endl;
+        }
+        aux2 = aux2 -> prox;
+    }
+
+    int opcionIDCurso;
+    std::cout <<"Ingrese el ID del alumno a registrar: ";
+    std::cin >> opcionIDCurso;
+    std::cout << "Curso elegido: " << std::endl;
+    NodoCurso* cursoElegido = buscarCurso(headCurso, opcionIDCurso, "");
+    std::cout << std::endl;
+
+    //cursoElegido -> dato -> registrarAlumnoEnCurso(elegido);
+    //cursoElegido -> dato -> mostrarAlumnoEnCurso();
 
 }
 
@@ -198,6 +242,7 @@ void Sistema::insertarNodoAlFinalCursos(NodoCurso *&nodo_curso, NodoCurso *&head
 
     aux -> prox = nodo_curso;
 }
+
 
 
 

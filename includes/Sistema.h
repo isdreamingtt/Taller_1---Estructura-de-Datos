@@ -19,12 +19,12 @@ public:
     //Manejo de Alumnos
     NodoAlumno* registrarAlumno(int id, std::string nombre, std::string apellido,
         std::string carrera, std::string anioIngreso, NodoAlumno*& headAlumno);
-    void buscarAlumno(NodoAlumno* headAlumno, int id, std::string nombre);
+    NodoAlumno* buscarAlumno(NodoAlumno* headAlumno, int id, std::string nombre);
     void eliminarAlumno(NodoAlumno*& headAlumno, int id);
 
     //Manejo de Cursos
     void registrarCurso(int id, std::string nombre, int cantMaxEstudiantes, std::string carrera, std::string nombreProfesor, NodoCurso*& headCurso);
-    void buscarCurso(NodoCurso* headCurso, int id, std::string nombre);
+    NodoCurso* buscarCurso(NodoCurso* headCurso, int id, std::string nombre);
     void eliminarCurso(NodoCurso*& headCurso, int id);
 
     //Manejo de inscripciones

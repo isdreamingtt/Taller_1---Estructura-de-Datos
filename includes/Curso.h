@@ -5,6 +5,7 @@
 #include <iostream>
 
 class NodoAlumno;
+class Alumno;
 
 class Curso{
     private:
@@ -27,4 +28,7 @@ class Curso{
         NodoAlumno* getAlumnos();
         NodoNotas* getNotas();
         ~Curso();
+        void registrarAlumnoEnCurso(NodoAlumno* alumno);
+        void mostrarAlumnoEnCurso();
+
 };
