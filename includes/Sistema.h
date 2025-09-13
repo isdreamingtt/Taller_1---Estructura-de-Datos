@@ -25,7 +25,7 @@ public:
     //Manejo de Cursos
     void registrarCurso(int id, std::string nombre, int cantMaxEstudiantes, std::string carrera, std::string nombreProfesor, NodoCurso*& headCurso);
     void buscarCurso(NodoCurso* headCurso, int id, std::string nombre);
-    void eliminarCurso();
+    void eliminarCurso(NodoCurso*& headCurso, int id);
 
     //Manejo de inscripciones
     void inscribirAlumnoCurso();

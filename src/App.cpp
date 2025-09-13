@@ -143,7 +143,18 @@ void ManejoCursos(Sistema* sistema, NodoCurso* headCurso){
             std::cout << std::endl;
 
         }else if (opcion == 3) {
+            if (headCurso == nullptr) {
+                std::cout << "No se encuentra ningun alumno inscrito aun" << std::endl;
+                std::cout << std::endl;
+                break;
+            }
+            std::cout << std::endl;
+            int opBuscarEliminar;
+            std::cout << "Ingrese ID de curso para eliminar: ";
+            std::cin >> opBuscarEliminar;
 
+            sistema -> eliminarCurso(headCurso, opBuscarEliminar);
+            std::cout << std::endl;
         }else {
             std::cout << std::endl;
             std::cout << "Opción no válida. Por favor, intente de nuevo." << std::endl;

@@ -56,7 +56,7 @@ void Sistema::eliminarAlumno(NodoAlumno*& headAlumno, int id) {
     while (aux != nullptr && aux -> prox != nullptr) {
         if (aux -> prox -> dato -> getId() == id) {
             NodoAlumno* aux2 = aux -> prox;
-            aux -> prox = aux2 -> prox -> prox;
+            aux -> prox = aux2 -> prox;
             delete aux2;
             return;
         }
@@ -94,7 +94,23 @@ void Sistema::buscarCurso(NodoCurso* headCurso, int id, std::string nombre) {
     }
 
 }
-void Sistema::eliminarCurso() {
+void Sistema::eliminarCurso(NodoCurso*& headCurso, int id) {
+    if (headCurso -> dato -> getId() == id) {
+        NodoCurso* aux = headCurso;
+        headCurso = headCurso -> prox;
+        delete aux;
+        return;
+    }
+    NodoCurso* aux = headCurso;
+    while (aux != nullptr && aux -> prox != nullptr) {
+        if (aux -> prox -> dato -> getId() == id) {
+            NodoCurso* aux2 = aux -> prox;
+            aux -> prox = aux2 -> prox;
+            delete aux2;
+            return;
+        }
+        aux = aux -> prox;
+    }
 }
 
 //Manejo de inscripciones
