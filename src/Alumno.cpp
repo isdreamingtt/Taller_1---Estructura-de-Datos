@@ -1,4 +1,5 @@
 #include "../includes/Alumno.h"
+#include "../includes/Curso.h"
 #include <iostream>
 
 Alumno::Alumno(){};

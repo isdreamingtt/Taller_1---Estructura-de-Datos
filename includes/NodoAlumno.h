@@ -1,6 +1,8 @@
 #pragma once
-#include "Alumno.h"
 #include <string>
+
+class Alumno;
+
 class NodoAlumno {
 public:
     Alumno* dato;

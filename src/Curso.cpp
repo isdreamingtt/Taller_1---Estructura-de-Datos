@@ -1,4 +1,5 @@
 #include "../includes/Curso.h"
+#include "../includes/NodoAlumno.h"
 #include <iostream>
 
 Curso::Curso(){};
@@ -8,6 +9,8 @@ Curso::Curso(int id, std::string nombre, int cantidadMaxEstudiantes, std::string
     this->cantidadMaxEstudiantes = cantidadMaxEstudiantes;
     this->carrera = carrera;
     this->nombreProfesor = nombreProfesor;
+    this->alumnos = nullptr;
+    this->notas = nullptr;
 }
 
 Curso::~Curso(){}
@@ -27,3 +30,12 @@ std::string Curso::getCarrera(){
 std::string Curso::getNombreProfesor(){
     return this->nombreProfesor;
 }
+
+NodoAlumno* Curso::getAlumnos() {
+    return  this->alumnos;
+}
+
+NodoNotas* Curso::getNotas() {
+    return  this->notas;
+}
+

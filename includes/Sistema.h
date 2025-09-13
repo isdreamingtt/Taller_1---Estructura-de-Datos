@@ -28,7 +28,7 @@ public:
     void eliminarCurso(NodoCurso*& headCurso, int id);
 
     //Manejo de inscripciones
-    void inscribirAlumnoCurso();
+    void inscribirAlumnoCurso(NodoCurso*& headCurso, NodoAlumno*& headAlumno);
     void eliminarAlumnoCurso();
 
     //Manejo de Notas (1.0 - 7.0)

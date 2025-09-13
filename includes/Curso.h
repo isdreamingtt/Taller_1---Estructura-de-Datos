@@ -1,6 +1,10 @@
 #pragma once
+
+#include "NodoCurso.h"
 #include "NodoNotas.h"
 #include <iostream>
+
+class NodoAlumno;
 
 class Curso{
     private:
@@ -9,6 +13,7 @@ class Curso{
         int cantidadMaxEstudiantes;
         std::string carrera;
         std::string nombreProfesor;
+        NodoAlumno* alumnos;
         NodoNotas* notas;
     public:
         Curso();
@@ -19,5 +24,7 @@ class Curso{
         int getCantidadMaxEstudiantes();
         std::string getCarrera();
         std::string getNombreProfesor();
+        NodoAlumno* getAlumnos();
+        NodoNotas* getNotas();
         ~Curso();
 };

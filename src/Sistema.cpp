@@ -114,8 +114,10 @@ void Sistema::eliminarCurso(NodoCurso*& headCurso, int id) {
 }
 
 //Manejo de inscripciones
-void Sistema::inscribirAlumnoCurso() {  
+void Sistema::inscribirAlumnoCurso(NodoCurso*& headCurso, NodoAlumno*& headAlumno) {
+
 }
+
 void Sistema::eliminarAlumnoCurso() {
 }
 

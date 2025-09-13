@@ -1,7 +1,9 @@
 #pragma once
-#include "Curso.h"
+
 
 #include <iostream>
+
+class Curso;
 
 class Alumno{
     private:

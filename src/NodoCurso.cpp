@@ -1,5 +1,9 @@
 #include "../includes/NodoCurso.h"
+#include "../includes/Curso.h"
+
 #include <string>
+
+
 
 NodoCurso::NodoCurso(Curso* dato) {
     this -> dato = dato;
@@ -16,5 +20,5 @@ std::string NodoCurso::toString() {
         ", Cantidad de estudiantes: " +
             std::to_string(this -> dato -> getCantidadMaxEstudiantes())+
                 ", Carrera: " + this -> dato -> getCarrera() +
-                    ", Profesro: " + this-> dato -> getNombreProfesor();
+                    ", Profesor: " + this-> dato -> getNombreProfesor();
 }

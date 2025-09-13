@@ -1,4 +1,5 @@
 #include "../includes/NodoAlumno.h"
+#include "../includes/Alumno.h"
 
 NodoAlumno::NodoAlumno(Alumno* dato) {
     this -> dato = dato;
